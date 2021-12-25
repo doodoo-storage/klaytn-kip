@@ -1,2 +1,1 @@
-# klaytn-kip-17
-klaytn-kip-17
+### klaytn chain KIP 17 token 
