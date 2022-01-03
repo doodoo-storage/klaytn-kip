@@ -100,4 +100,24 @@ contract KIP37Token is Context, KIP37 {
 
     _mintBatch(_to, ids, _values, "");
   }
+
+  /** 토큰 소각 */
+  function burn(address account, uint256 id, uint256 value) public {
+    require(
+      account == _msgSender() || isApprovedForAll(account, _msgSender()),
+      "KIP37: caller is not owner nor approved"
+    );
+
+    _burn(account, id, value);
+  }
+
+  /** 일괄 토큰 소각 */
+  function burnBatch(address account, uint256[] memory ids, uint256[] memory values) public {
+    require(
+      account == _msgSender() || isApprovedForAll(account, _msgSender()),
+      "KIP37: caller is not owner nor approved"
+    );
+
+    _burnBatch(account, ids, values);
+  }
 }

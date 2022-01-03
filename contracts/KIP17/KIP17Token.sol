@@ -23,6 +23,11 @@ contract KIP17Token is Context, KIP17, KIP17Metadata {
     return newItemId;
   }
 
+  function burn(uint256 tokenId) public {
+    require(_isApprovedOrOwner(msg.sender, tokenId), "KIP17Burnable: caller is not owner nor approved");
+    _burn(tokenId);
+  }
+
   function getCurrentTokenId() public view returns (uint256) {
     return _tokenIds.current();
   }
